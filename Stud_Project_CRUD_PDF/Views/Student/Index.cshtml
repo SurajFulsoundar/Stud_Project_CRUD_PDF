@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Stud_Project_CRUD_PDF.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+
+    <h1>Index</h1>
+
+}
+
+<form asp-controller="Student" asp-action="Index" method="post">
+    <label for="SearchBy">Select:</label>
+    <select name="SearchBy" id="SearchBy">
+        <option value="Stud_Name">Student Name</option>
+        <option value="Grade">Grade</option>
+        <option value="Academic_Year">Academic Year</option>
+        <option value="Standard">Standard</option>
+    </select>
+    <br />
+    <br />
+
+    <label for="Accept">Search:</label>
+    <input type="text" name="Accept" id="Accept" />
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+
+</br>
+
+
+
+<a href="/Student/Index" class="btn btn-secondary"> All List</a>
+
+<a asp-action="Create" class="btn btn-primary"> Create New</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Roll_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stud_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stud_Fees_Record)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Academic_Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Standard)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roll_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stud_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stud_Fees_Record)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Academic_Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Standard)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Roll_Number  }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Roll_Number }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Roll_Number })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
